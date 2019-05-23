@@ -11,33 +11,18 @@ public class MainApp {
 
     public static void main(String[] args) {
 
-        SessionFactory factory = new Configuration().configure()
-//                .addAnnotatedClass(Teacher.class)
-                .buildSessionFactory();
+        Configuration configure = new Configuration().configure();
+        //                .addAnnotatedClass(Teacher.class)
 
-        Session session = factory.getCurrentSession();
+        try (
+                SessionFactory factory = configure.buildSessionFactory();
+                Session session = factory.openSession()
+        ) {
+            Teacher teacher = session.get(Teacher.class, 2777L);
 
-        Teacher teacher = new Teacher();
+            System.out.println(teacher.toString());
+        }
 
-        teacher.setName("ALi");
-        teacher.setSalary(10000);
-        teacher.setTeacherCode("123456");
-
-        Course course1 = new Course("riazi", teacher);
-        Course course2 = new Course("riazi2", teacher);
-
-        teacher.addCourse(course1);
-        teacher.addCourse(course2);
-
-        session.beginTransaction();
-
-        session.persist(teacher);
-
-        session.getTransaction().commit();
-
-        session.close();
-
-        factory.close();
 
     }
 }
