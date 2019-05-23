@@ -21,7 +21,9 @@ public class Teacher implements Serializable {
 
     private double salary;
 
-    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "teacher",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER)
     private List<Course> courses;
 
     @Transient
@@ -89,5 +91,16 @@ public class Teacher implements Serializable {
 
     public void setSalaryDay(double salaryDay) {
         this.salaryDay = salaryDay;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", teacherCode='" + teacherCode + '\'' +
+                ", salary=" + salary +
+                ", salaryDay=" + salaryDay +
+                '}';
     }
 }
