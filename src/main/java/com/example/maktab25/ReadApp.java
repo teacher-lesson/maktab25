@@ -36,12 +36,14 @@ public class ReadApp {
 
 //            System.out.println(teacher.getCourses());
 
+            teacher.getCourses().size();
+
             System.out.println("teacher end!");
 
-        }
+        } // session closed
+
+
 
         System.out.println(teacher.getCourses());
-
-
     }
 }
