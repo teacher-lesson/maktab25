@@ -31,6 +31,7 @@ public class ReadApp {
 
             System.out.println("teacher load!");
             teacher = session.get(Teacher.class, 1L);
+            teacher = session.get(Teacher.class, 2L);
 
             System.out.println("teacher loaded!");
 
@@ -45,5 +46,6 @@ public class ReadApp {
 
 
         System.out.println(teacher.getCourses());
+//        System.out.println(teacher2.getCourses()); //Lazy exception
     }
 }
