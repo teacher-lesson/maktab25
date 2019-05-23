@@ -30,6 +30,12 @@ public class Teacher implements Serializable {
     public Teacher() {
     }
 
+    public Teacher(String name, String teacherCode, double salary) {
+        this.name = name;
+        this.teacherCode = teacherCode;
+        this.salary = salary;
+    }
+
     public Long getId() {
         return id;
     }
@@ -63,6 +69,14 @@ public class Teacher implements Serializable {
             this.courses = new ArrayList<>();
         }
         this.courses.add(course);
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     public void setSalary(double salary) {
