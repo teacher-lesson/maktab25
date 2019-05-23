@@ -23,21 +23,24 @@ public class ReadApp {
             configure.addAnnotatedClass(aClass);
         }
 
+        Teacher teacher;
         try (
                 SessionFactory factory = configure.buildSessionFactory();
                 Session session = factory.openSession()
         ) {
 
             System.out.println("teacher load!");
-            Teacher teacher = session.get(Teacher.class, 1L);
+            teacher = session.get(Teacher.class, 1L);
 
             System.out.println("teacher loaded!");
 
-            System.out.println(teacher.getCourses());
+//            System.out.println(teacher.getCourses());
 
             System.out.println("teacher end!");
 
         }
+
+        System.out.println(teacher.getCourses());
 
 
     }

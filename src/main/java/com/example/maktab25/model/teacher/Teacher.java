@@ -23,7 +23,7 @@ public class Teacher implements Serializable {
 
     @OneToMany(mappedBy = "teacher",
             cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
+            fetch = FetchType.LAZY)
     private List<Course> courses;
 
     @Transient
