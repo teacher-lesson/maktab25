@@ -30,22 +30,15 @@ public class ReadApp {
         ) {
 
             System.out.println("teacher load!");
-            teacher = session.get(Teacher.class, 1L);
-            teacher = session.get(Teacher.class, 2L);
+            teacher = session.createQuery("from Teacher t join fetch t.courses where t.id=?1", Teacher.class).setParameter(1, 1L).getSingleResult();
 
             System.out.println("teacher loaded!");
-
-//            System.out.println(teacher.getCourses());
-
-            teacher.getCourses().size();
 
             System.out.println("teacher end!");
 
         } // session closed
 
 
-
         System.out.println(teacher.getCourses());
-//        System.out.println(teacher2.getCourses()); //Lazy exception
     }
 }
