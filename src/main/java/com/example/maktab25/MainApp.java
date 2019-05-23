@@ -23,7 +23,11 @@ public class MainApp {
         teacher.setSalary(10000);
         teacher.setTeacherCode("123456");
 
+        Course course1 = new Course("riazi", teacher);
+        Course course2 = new Course("riazi2", teacher);
 
+        teacher.addCourse(course1);
+        teacher.addCourse(course2);
 
         session.beginTransaction();
 

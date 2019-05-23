@@ -4,6 +4,7 @@ import com.example.maktab25.model.course.Course;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -55,6 +56,13 @@ public class Teacher implements Serializable {
 
     public double getSalary() {
         return salary;
+    }
+
+    public void addCourse(Course course) {
+        if (this.courses == null) {
+            this.courses = new ArrayList<>();
+        }
+        this.courses.add(course);
     }
 
     public void setSalary(double salary) {
