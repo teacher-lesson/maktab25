@@ -6,16 +6,23 @@ import com.example.maktab25.model.teacher.Teacher;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.reflections.Reflections;
+
+import javax.persistence.Entity;
+import java.util.Set;
 
 public class MainApp {
 
     public static void main(String[] args) {
 
-        Configuration configure = new Configuration()
-//                .configure() // hibernate cfg.xml
-                .addAnnotatedClass(Teacher.class)
-                .addAnnotatedClass(Course.class);
-        //                .addAnnotatedClass(Teacher.class)
+        Reflections reflections = new Reflections(MainApp.class.getPackage().getName());
+        Set<Class<?>> classes = reflections.getTypesAnnotatedWith(Entity.class);
+
+        Configuration configure = new Configuration();
+
+        for (Class<?> aClass : classes) {
+            configure.addAnnotatedClass(aClass);
+        }
 
         try (
                 SessionFactory factory = configure.buildSessionFactory();
