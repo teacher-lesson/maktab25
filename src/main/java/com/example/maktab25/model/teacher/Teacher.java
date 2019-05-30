@@ -71,6 +71,7 @@ public class Teacher implements Serializable {
             this.courses = new ArrayList<>();
         }
         this.courses.add(course);
+        course.setTeacher(this); // add teacher ref to update fk
     }
 
     public List<Course> getCourses() {

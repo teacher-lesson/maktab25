@@ -25,6 +25,10 @@ public class Course {
     public Course() {
     }
 
+    public Course(String name) {
+        this.name = name;
+    }
+
     public Course(String name, Teacher teacher) {
         this.name = name;
         this.teacher = teacher;
