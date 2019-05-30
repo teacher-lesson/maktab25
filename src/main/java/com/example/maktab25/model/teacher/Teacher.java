@@ -1,6 +1,10 @@
 package com.example.maktab25.model.teacher;
 
+import com.example.maktab25.model.student.Student;
+
 import javax.persistence.*;
+
+import java.util.Collection;
 
 import static com.example.maktab25.model.teacher.Teacher.TABLE_NAME;
 
@@ -21,6 +25,14 @@ public class Teacher {
 
     @Column(name = "name", length = 45, nullable = false)
     private String name;
+
+    // many to many
+    @ManyToMany
+    @JoinTable(name = "teacher_students", // name of middle table
+            joinColumns = @JoinColumn(name = "t_id"), // name of fk column to this table in middle table
+            inverseJoinColumns = @JoinColumn(name = "s_id") // name of fk column to other side table in middle table
+    )
+    private Collection<Student> students;
 
     // constructor
 
