@@ -5,6 +5,7 @@ import com.example.maktab25.model.student.Student;
 import javax.persistence.*;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import static com.example.maktab25.model.teacher.Teacher.TABLE_NAME;
 
@@ -65,8 +66,14 @@ public class Teacher {
         this.name = name;
     }
 
-    // toString
+    public void addStudent(Student student) {
+        if (students == null) {
+            this. students = new HashSet<>();
+        }
+        this.students.add(student);
+    }
 
+    // toString
 
     @Override
     public String toString() {
