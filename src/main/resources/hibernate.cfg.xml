@@ -19,6 +19,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <mapping class="com.example.maktab25.model.teacher.Teacher"/>
+        <mapping resource="user.hbm.xml"/>
         <mapping class="com.example.maktab25.model.student.Student"/>
 
     </session-factory>
