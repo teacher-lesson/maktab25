@@ -1,18 +1,18 @@
-package com.example.maktab25.model.teacher;
+package com.example.maktab25.model.student;
 
 import javax.persistence.*;
 
-import static com.example.maktab25.model.teacher.Teacher.TABLE_NAME;
+import static com.example.maktab25.model.student.Student.TABLE_NAME;
 
 @Entity
 @Table(name = TABLE_NAME)
-public class Teacher {
+public class Student {
 
     // CONST
-    public static final String TABLE_NAME = "teachers";
-    public static final String ENTITY_NAME = "Teacher";
+    public static final String TABLE_NAME = "students";
+    public static final String ENTITY_NAME = "Student";
 
-    //fields
+    // fields
 
     @Id
     @Column(name = "id")
@@ -26,12 +26,12 @@ public class Teacher {
 
 
     // require
-    public Teacher() {
+    public Student() {
         // require by hibernate(and jpa)
     }
 
     // optional
-    public Teacher(String name) {
+    public Student(String name) {
         this.name = name;
     }
 
