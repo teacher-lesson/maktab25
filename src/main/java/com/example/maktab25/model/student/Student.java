@@ -1,6 +1,10 @@
 package com.example.maktab25.model.student;
 
+import com.example.maktab25.model.teacher.Teacher;
+
 import javax.persistence.*;
+
+import java.util.Collection;
 
 import static com.example.maktab25.model.student.Student.TABLE_NAME;
 
@@ -21,6 +25,9 @@ public class Student {
 
     @Column(name = "name", length = 45, nullable = false)
     private String name;
+
+    @ManyToMany(mappedBy = "students")
+    private Collection<Teacher> teachers;
 
     // constructor
 
