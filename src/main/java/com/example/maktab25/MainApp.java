@@ -18,19 +18,17 @@ public class MainApp {
         ) {
             session.beginTransaction();
 
-            Teacher teacher = new Teacher("teacher3");
+            Student student3 = new Student("student0");
 
-            Student student1 = session.find(Student.class, 1L);
-            Student student2 = session.find(Student.class, 2L);
-//            Student student3 = session.find(Student.class, 3L);
+            Teacher teacher1 = session.find(Teacher.class, 1L);
+            Teacher teacher2 = session.find(Teacher.class, 2L);
+            Teacher teacher3 = session.find(Teacher.class, 3L);
 
-            teacher.addStudent(student1);
-            teacher.addStudent(student2);
-//            teacher.addStudent(student3);
+            student3.addTeacher(teacher1);
+            student3.addTeacher(teacher2);
+            student3.addTeacher(teacher3);
 
-            session.persist(teacher);
-
-
+            session.persist(student3);
 
             session.getTransaction().commit();
         }

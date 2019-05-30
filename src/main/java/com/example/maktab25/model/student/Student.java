@@ -3,8 +3,8 @@ package com.example.maktab25.model.student;
 import com.example.maktab25.model.teacher.Teacher;
 
 import javax.persistence.*;
-
 import java.util.Collection;
+import java.util.HashSet;
 
 import static com.example.maktab25.model.student.Student.TABLE_NAME;
 
@@ -26,7 +26,11 @@ public class Student {
     @Column(name = "name", length = 45, nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "students")
+    @ManyToMany
+    @JoinTable(name = "teacher_students",
+            joinColumns = @JoinColumn(name = "s_id"),
+            inverseJoinColumns = @JoinColumn(name = "t_id")
+    )
     private Collection<Teacher> teachers;
 
     // constructor
@@ -58,6 +62,13 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void addTeacher(Teacher t) {
+        if (teachers == null) {
+            this.teachers = new HashSet<>();
+        }
+        this.teachers.add(t);
     }
 
     // toString
