@@ -1,9 +1,12 @@
 package com.example.maktab25.model.teacher;
 
 import com.example.maktab25.model.student.Student;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -27,6 +30,10 @@ public class Teacher {
     @Column(name = "name", length = 45, nullable = false)
     private String name;
 
+//    @CreationTimestamp // hibernate way , only usable in hibernate
+    @Column(name = "created_date", updatable = false)
+    private Instant createdDate;
+
     // many to many
     @ManyToMany
     @JoinTable(name = "teacher_students", // name of middle table
@@ -46,6 +53,12 @@ public class Teacher {
     // optional
     public Teacher(String name) {
         this.name = name;
+    }
+
+    @PrePersist // usable in all orm (hibernate, eclipselink, ...)
+    // preUpdate , preRemove, PostPersist, PostUpdate, PostRemove
+    public void addCreatedDate(){
+        this.createdDate = Instant.now();
     }
 
     // setter getter

@@ -18,15 +18,15 @@ public class MainApp {
         ) {
             session.beginTransaction();
 
-            Teacher teacher = new Teacher("teacher2");
+            Teacher teacher = new Teacher("teacher3");
 
             Student student1 = session.find(Student.class, 1L);
             Student student2 = session.find(Student.class, 2L);
-            Student student3 = session.find(Student.class, 3L);
+//            Student student3 = session.find(Student.class, 3L);
 
             teacher.addStudent(student1);
             teacher.addStudent(student2);
-            teacher.addStudent(student3);
+//            teacher.addStudent(student3);
 
             session.persist(teacher);
 
