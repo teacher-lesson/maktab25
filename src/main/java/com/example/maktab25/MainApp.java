@@ -18,7 +18,7 @@ public class MainApp {
         ) {
             session.beginTransaction();
 
-            Student student3 = new Student("student0");
+            Student student3 = new Student("studentFake");
 
             Teacher teacher1 = session.find(Teacher.class, 1L);
             Teacher teacher2 = session.find(Teacher.class, 2L);
@@ -28,6 +28,8 @@ public class MainApp {
             student3.addTeacher(teacher2);
             student3.addTeacher(teacher3);
 
+            // student cannot add relational
+            // so not any id in middle table
             session.persist(student3);
 
             session.getTransaction().commit();

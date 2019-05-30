@@ -26,11 +26,7 @@ public class Student {
     @Column(name = "name", length = 45, nullable = false)
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "teacher_students",
-            joinColumns = @JoinColumn(name = "s_id"),
-            inverseJoinColumns = @JoinColumn(name = "t_id")
-    )
+    @ManyToMany(mappedBy = "students")
     private Collection<Teacher> teachers;
 
     // constructor
