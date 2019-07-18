@@ -1,6 +1,8 @@
 package com.example;
 
 import com.example.domin.teacher.Teacher;
+import com.example.domin.teacher.dao.TeacherDao;
+import com.example.domin.teacher.service.TeacherService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,18 +17,13 @@ public class DemoJdbcApp {
         ApplicationContext ctx
                 = new ClassPathXmlApplicationContext("application-context-base.xml");
 
-        SessionFactory factory = ctx.getBean(SessionFactory.class);
-        Session currentSession = factory.openSession();
-        Transaction transaction = currentSession.beginTransaction();
+        TeacherService teacherService = ctx.getBean(TeacherService.class);
 
         Teacher teacher = new Teacher();
-        teacher.setName("TName1");
-        teacher.setSureName("TSame1");
+        teacher.setName("tName2");
+        teacher.setSureName("tSame2");
 
-        currentSession.persist(teacher);
-        transaction.commit();
-        currentSession.close();
-        factory.close();
+        teacherService.add(teacher);
 
 
     }

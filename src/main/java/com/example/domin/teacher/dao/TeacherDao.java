@@ -17,15 +17,11 @@ public class TeacherDao {
 
     public void create(Teacher teacher) {
         Session session = sessionFactory.openSession();
-
         Transaction transaction = session.beginTransaction();
-
         session.save(teacher);
 
         transaction.commit();
-
         session.close();
-
     }
 
 
