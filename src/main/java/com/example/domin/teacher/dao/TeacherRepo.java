@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TeacherRepo extends JpaRepository<Teacher, Long> {
-    
+
     @Query("select t from Teacher t where t.name=:sname")
     Teacher getByName(@Param("sname") String name);
 
     @Modifying
     @Query("update Teacher t set t.name=:sname where t.id=:id")
-    Teacher changeName(@Param("sname") String name, @Param("id") Long id);
+    void changeName(@Param("sname") String name, @Param("id") Long id);
 }

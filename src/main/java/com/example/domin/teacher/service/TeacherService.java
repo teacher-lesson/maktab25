@@ -42,4 +42,9 @@ public class TeacherService {
     public Teacher getByName(String name){
         return teacherRepo.getByName(name);
     }
+
+
+    public void changeName(String name, long id){
+        teacherRepo.changeName(name, id);
+    }
 }

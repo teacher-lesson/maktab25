@@ -20,7 +20,12 @@ public class DemoJdbcApp {
         teacher.setSureName("tSame4");
 
         teacherService.add(teacher);
-//        teacherService.r(teacher);
+
+        teacherService.changeName("tttt", 1);
+//
+        Teacher tName4 = teacherService.getByName("tttt");
+
+        System.out.println(tName4);
 
 
     }
