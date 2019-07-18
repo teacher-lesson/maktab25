@@ -1,13 +1,22 @@
 package com.example.domin.teacher;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.*;
+
+import javax.persistence.*;
+
+@Data
 
 @Entity
 @Table
 public class Teacher {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ToString.Exclude
+    private String name;
+
+    private String sureName;
+
 }
