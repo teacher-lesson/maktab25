@@ -2,6 +2,7 @@ package com.example;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -16,21 +17,10 @@ public class DemoJdbcApp {
         ApplicationContext ctx
                 = new ClassPathXmlApplicationContext("application-context-base.xml");
 
-        DataSource dataSource = ctx.getBean("dataSource", DataSource.class);
-        DataSource dataSource2 = (DataSource) ctx.getBean("dataSource2");
+        JdbcTemplate template = ctx.getBean(JdbcTemplate.class);
 
+        Integer integer = template.queryForObject("SELECT count(*) FROM `students`", Integer.class);
 
-        Connection connection = dataSource.getConnection();
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM `students` WHERE 1");
-
-        resultSet.next();
-        String string = resultSet.getString(2);
-        System.out.println(string);
-
-        resultSet.close();
-        statement.close();
-        connection.close();
-
+        System.out.println(integer);
     }
 }
