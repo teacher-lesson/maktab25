@@ -3,12 +3,15 @@ package com.example;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DemoJdbcApp {
 
@@ -19,8 +22,13 @@ public class DemoJdbcApp {
 
         JdbcTemplate template = ctx.getBean(JdbcTemplate.class);
 
-        Integer integer = template.queryForObject("SELECT count(*) FROM `students`", Integer.class);
+        SimpleJdbcInsert insert = new SimpleJdbcInsert(template).withTableName("students");
 
-        System.out.println(integer);
+        Map<String, Object> parameter = new HashMap<>();
+        parameter.put("id", 7);
+        parameter.put("name", "stu56");
+
+        insert.execute(parameter);
+
     }
 }
