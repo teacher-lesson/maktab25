@@ -20,6 +20,7 @@ public class DemoJdbcApp {
         teacher.setSureName("tSame4");
 
         teacherService.add(teacher);
+//        teacherService.r(teacher);
 
 
     }
