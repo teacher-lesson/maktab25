@@ -3,8 +3,8 @@ package com.example.domin.teacher.dao;
 import com.example.domin.teacher.Teacher;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class TeacherDao {
@@ -15,12 +15,10 @@ public class TeacherDao {
         this.sessionFactory = sessionFactory;
     }
 
+    @Transactional
     public void create(Teacher teacher) {
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
         session.save(teacher);
-
-        transaction.commit();
         session.close();
     }
 

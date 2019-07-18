@@ -20,8 +20,8 @@ public class DemoJdbcApp {
         TeacherService teacherService = ctx.getBean(TeacherService.class);
 
         Teacher teacher = new Teacher();
-        teacher.setName("tName2");
-        teacher.setSureName("tSame2");
+        teacher.setName("tName3");
+        teacher.setSureName("tSame3");
 
         teacherService.add(teacher);
 
