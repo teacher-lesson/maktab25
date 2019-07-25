@@ -18,19 +18,31 @@ public class PostController {
     private PostService postService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<Post> list(){
+    public List<Post> list() {
         return postService.getAll();
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity create(@RequestBody Post post){
+    public ResponseEntity create(@RequestBody Post post) {
         postService.create(post);
         return ResponseEntity.status(402).build();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE, path = "/{id}")
-    public Post getById(@PathVariable("id") Long id){
+    public Post getById(@PathVariable("id") Long id) {
         return postService.getById(id);
+    }
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity update(@RequestBody Post post) {
+        postService.update(post);
+        return ResponseEntity.accepted().build();
+    }
+
+    @DeleteMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE, path = "/{id}")
+    public ResponseEntity deleteById(@PathVariable("id") Long id) {
+        postService.deleteById(id);
+        return ResponseEntity.accepted().build();
     }
 
 
