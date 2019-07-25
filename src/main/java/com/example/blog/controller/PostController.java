@@ -34,7 +34,7 @@ public class PostController {
     }
 
 
-    @RequestMapping(path = "/test", method = RequestMethod.GET)
+    @RequestMapping(path = "/test")
     public String addTest() {
 
         Post post = new Post();
