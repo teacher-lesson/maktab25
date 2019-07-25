@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-    @RequestMapping(path = "/home")
+    @RequestMapping("/home")
     public String home(){
         return "This is test!";
     }
