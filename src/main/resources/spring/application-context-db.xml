@@ -8,8 +8,8 @@
           destroy-method="close">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/blog"/>
-        <property name="user" value="root"/>
-        <property name="password" value=""/>
+        <property name="user" value="${datasource.username}"/>
+        <property name="password" value="${datasource.password}"/>
 
         <!--connection pool config-->
         <property name="initialPoolSize" value="5"/>
@@ -24,7 +24,7 @@
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">create</prop>
-                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.show_sql">${datasource.show_sql}</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MariaDB103Dialect</prop>
                 <prop key="hibernate.id.new_generator_mappings">false</prop>
             </props>
