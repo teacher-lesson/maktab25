@@ -1,13 +1,14 @@
 package com.example.blog.model;
 
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Data
+@NoArgsConstructor
 
 @Entity
 @Table(name = "users")
@@ -30,7 +31,7 @@ public class User implements UserDetails {
     protected boolean active;
 
     @ManyToMany
-    @JoinTable( name = "users_roles",
+    @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )

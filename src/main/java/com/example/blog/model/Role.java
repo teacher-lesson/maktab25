@@ -1,12 +1,14 @@
 package com.example.blog.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Data
+@NoArgsConstructor
 
 @Entity
 @Table(name = "roles")
@@ -20,6 +22,10 @@ public class Role implements GrantedAuthority {
 
     @ManyToMany(mappedBy = "roles")
     protected Collection<User> users;
+
+    public Role(String name) {
+        this.name = name;
+    }
 
     @Override
     public String getAuthority() {
