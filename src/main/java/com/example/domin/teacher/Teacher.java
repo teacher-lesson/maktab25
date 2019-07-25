@@ -19,4 +19,6 @@ public class Teacher {
 
     private String sureName;
 
+    private String nationalCode;
+
 }

@@ -47,4 +47,8 @@ public class TeacherService {
     public void changeName(String name, long id){
         teacherRepo.changeName(name, id);
     }
+
+    public Teacher getByNCode(String nCode){
+        return teacherRepo.findByNationalCode(nCode);
+    }
 }

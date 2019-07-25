@@ -16,4 +16,6 @@ public interface TeacherRepo extends JpaRepository<Teacher, Long> {
     @Modifying
     @Query("update Teacher t set t.name=:sname where t.id=:id")
     void changeName(@Param("sname") String name, @Param("id") Long id);
+
+    Teacher findByNationalCode(String nationalCode);
 }

@@ -18,12 +18,13 @@ public class DemoJdbcApp {
         Teacher teacher = new Teacher();
         teacher.setName("tName4");
         teacher.setSureName("tSame4");
+        teacher.setNationalCode("123456789");
 
         teacherService.add(teacher);
 
         teacherService.changeName("tttt", 1);
 //
-        Teacher tName4 = teacherService.getByName("tttt");
+        Teacher tName4 = teacherService.getByNCode("123456789");
 
         System.out.println(tName4);
 
